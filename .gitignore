@@ -1,0 +1,9 @@
+.idea/
+node_modules/
+.dynamodb/
+.build/
+dist/
+.tscache
+reports
+coverage
+.nyc_output

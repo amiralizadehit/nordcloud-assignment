@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2019",
+    "lib": [ "es2019", "dom" ],
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "rootDir": "./",
+    "sourceMap": true,
+    "allowJs": false,
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "noImplicitReturns": true,
+    "preserveConstEnums": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "removeComments": true,
+    "strict": true,
+    "alwaysStrict": true
+  },
+  "exclude": [ "node_modules", "webpack", "./test/*.spec.ts" ],
+  "include": ["./src/**/*"],
+  "types": [ "typePatches" ]
+}
