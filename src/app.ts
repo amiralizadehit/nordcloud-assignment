@@ -1,13 +1,13 @@
 import {LinkStation} from "./linkstation";
 import {Point} from "./point";
 
-const linkStations:LinkStation[] =
+const givenLinkStations:LinkStation[] =
     [
         new LinkStation(new Point(0,0),10),
         new LinkStation(new Point(20,20),5),
         new LinkStation(new Point(10,0),12)
     ]
-const devices:Point[] =
+const givenDevices:Point[] =
     [
         new Point(0,0),
         new Point(100,100),
@@ -15,14 +15,18 @@ const devices:Point[] =
         new Point(18,18),
     ];
 
-findBestLinkStation();
+const solutionArray = findBestLinkStation(givenLinkStations, givenDevices);
+printSolutionArray(solutionArray);
 
-function findBestLinkStation(){
+function findBestLinkStation(linkStations:LinkStation[], devices:Point[]):string[]{
+    let resultStrings:string[] = [];
+    let resultString:string;
     let power = 0;
     let newPower = 0;
     let selectedLinkIndex = -1;
     let bestLinkStation = undefined;
     devices.forEach(device=>{
+        resultString = '';
         power = 0;
         newPower = 0;
         selectedLinkIndex = -1;
@@ -35,10 +39,20 @@ function findBestLinkStation(){
 
         });
         if(power===0){
-            console.log(`No link station within reach for point ${device.x}, ${device.y}`);
+            resultString = `No link station within reach for point ${device.x},${device.y}`;
         }else{
             bestLinkStation = linkStations[selectedLinkIndex];
-            console.log(`Best link station for point ${device.x}, ${device.y} is ${bestLinkStation.getPosition().x}, ${bestLinkStation.getPosition().x} with power ${power}`);
+            resultString = `Best link station for point ${device.x},${device.y} is ${bestLinkStation.getPosition().x},${bestLinkStation.getPosition().y} with power ${power.toFixed(2)}`;
         }
+        resultStrings.push(resultString);
     });
+    return resultStrings;
 }
+
+function printSolutionArray(array:string[]){
+    array.forEach(solution=>{
+        console.log(solution);
+    })
+}
+
+export {findBestLinkStation}
